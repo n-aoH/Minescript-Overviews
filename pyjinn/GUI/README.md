@@ -67,11 +67,11 @@ You can edit these widgets using methods from the `abstractWidget` class.
 
 `https://mappings.dev/1.21.10/net/minecraft/client/gui/components/AbstractWidget.html`
 
-The following code will remove the guidebook button from the crafting screen.
+The following code will remove the guidebook button from the crafting screen view.
 ```
 # inside after_init() 
 
 if "Crafting" in screen_name():
     btn = screen.children()[0]
-    btn.setX(50)
+    btn.setX(-50)
 ```

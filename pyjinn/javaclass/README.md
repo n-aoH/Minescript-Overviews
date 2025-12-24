@@ -1,4 +1,4 @@
-# Minescript Javaclass Overview
+# Minescript JavaClass Overview
 
 This guide was created for minescript to provide starter information on the JavaClass() function.
 
@@ -8,11 +8,11 @@ Assuming you are on minescript release 4.0b or later, you can run `\install_mapp
 
 This is a necessary step (for obfuscated versions) that tells your client what name goes in a human-readable format instead of something like `a(acs arg0)`
 
-## Finding built-in Javaclasses
+## Finding built-in JavaClasses
 
-Now that you have installed the mappings, the next step is to find a javaclass to reference.
+Now that you have installed the mappings, the next step is to find a JavaClass to reference.
 
-Many Javaclasses in minecraft require other classes to work properly, so I reccommend finding boilerplate code for some common ones (ex: minecraft.getInstance() ) to help you while you are getting started.
+Many JavaClasses in minecraft require other classes to work properly, so I reccommend finding boilerplate code for some common ones (ex: minecraft.getInstance() ) to help you while you are getting started.
 
 The best library for mappings up to 1.21.11 is `mappings.dev`. Navigate to your version in the page to find the massive list of methods you can access.
 
@@ -20,15 +20,30 @@ The best library for mappings up to 1.21.11 is `mappings.dev`. Navigate to your 
 
 
 
-## Accessing Javaclass()
+## Accessing JavaClass()
 
-Pyjinn has Javaclass automatically imported from `system.pyj.minescript`, but your .py files will require either `java` (recent versions) or `lib_java` (legacy)
+Pyjinn has JavaClass automatically imported from `system.pyj.minescript`, but your .py files will require either `java` (recent versions) or `lib_java` (legacy)
+
+Pyjinn:
+```
+from system.pyj.minescript import JavaClass #Technically not needed but your IDE gets less angry
+```
+
+Java:
+```
+from java import JavaClass
+```
+
+Lib_Java (legacy):
+```
+from lib_java import JavaClass
+```
 
 ## Tutorial: accessing Minecraft.getInstance()
 
-This tutorial will start with one of the first Javaclasses you will need to access for most of your player-based functions.
+This tutorial will start with one of the first JavaClasses you will need to access for most of your player-based functions.
 
-Under the mapping page for your version, `https://mappings.dev/1.21.10/index.html` for me, the fastest way to find most javaclasses is to use `ctrl + F`. Use this to find `net.minecraft.client`.
+Under the mapping page for your version, `https://mappings.dev/1.21.10/index.html` for me, the fastest way to find most JavaClasses is to use `ctrl + F`. Use this to find `net.minecraft.client`.
 
 <img width="297" height="256" alt="image" src="https://github.com/user-attachments/assets/2240370c-43de-4831-ac6e-eea7ddbb815a" />
 
@@ -36,7 +51,7 @@ There are several entries that include this, but you are looking for the entry t
 
 Inside your code, you can reference this as:
 ```
-Minecraft = Javaclass("net.minecraft.client")
+Minecraft = JavaClass("net.minecraft.client")
 ```
 
 From here, you can access the `GetInstance` method in order to create a class of it.
@@ -62,7 +77,7 @@ If you still require using Pyjinn files inside of a Python project, you can do s
 
 Using the above code to make a snippet:
 ```
-Minecraft = Javaclass("net.minecraft.client")
+Minecraft = JavaClass("net.minecraft.client")
 mc = Minecraft.getInstance()
 ```
 
@@ -84,14 +99,14 @@ You access these methods ingame using the Mojang mappings, similar to before:
 Putting it all together:
 
 ```
-Minecraft = Javaclass("net.minecraft.client")
+Minecraft = JavaClass("net.minecraft.client")
 mc = Minecraft.getInstance()
 
 Player = mc.Player
 Player.SetDeltaMovement(0, 5, 0)
 ```
 
-Now, you've just made your first Javaclass script that accesses a method!
+Now, you've just made your first JavaClass script that accesses a method!
 *note: The Player object gets reset every time you die, so make sure you re-reference it when needed.*
 
 To reference a method that will return something (ex: `boolean`) you can reference it like any other variable/function in python.

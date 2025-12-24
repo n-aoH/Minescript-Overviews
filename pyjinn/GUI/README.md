@@ -53,3 +53,25 @@ The `after_init()` function is called once upon the screen opening, meaning that
 
 You can use the button constructor method as many times as you want.
 
+## Editing GUI buttons
+
+A list of screen widgets for any screen can be recieved from
+```
+screen = mc.screen # or screen arg from after_init()
+btn = screen.children()
+```
+
+Some screens already have pre-made buttons, so you can sort through the list manually and then alter your buttons from there.
+
+You can edit these widgets using methods from the `abstractWidget` class.
+
+`https://mappings.dev/1.21.10/net/minecraft/client/gui/components/AbstractWidget.html`
+
+The following code will cause the chat cursor to be placed to the right in the "Chat" screen.
+```
+# inside after_init() 
+
+if "Chat" in screen_name():
+    btn = screen.children()[0]
+    btn.setX(50)
+```

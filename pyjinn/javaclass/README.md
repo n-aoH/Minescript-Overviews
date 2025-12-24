@@ -4,7 +4,7 @@ This guide was created for minescript to provide starter information on the Java
 
 ## Mappings
 
-Assuming you are on minescript release 4.0b or later, you can run `\install_mappings` in your chat to load them in.
+Assuming you are on minescript release 5.0b or later, you can run `\install_mappings` in your chat to load them in.
 
 This is a necessary step (for obfuscated versions) that tells your client what name goes in a human-readable format instead of something like `a(acs arg0)`
 

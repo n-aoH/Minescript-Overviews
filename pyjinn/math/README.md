@@ -29,3 +29,16 @@ x_offset = Math.sin(20) * radius
 ```
 
 As a reminder, all trig functions use radians as their unit of measurement, not degrees. Convert between them with `Math.toRadians(degrees)`
+
+# Alternative solution
+
+I have also created a drop-in replacement for the `math` module in python if you would like to access it in VS Code (or other IDES) automatically instead of using the java documentation.
+
+https://github.com/n-aoH/minescript-projects/blob/main/pyjinn-utils/math_pyj.py
+
+It can be imported as:
+```python
+import math_pyj as math
+```
+
+And from there, it's the same as using the math module.

@@ -102,7 +102,7 @@ Putting it all together:
 Minecraft = JavaClass("net.minecraft.client.Minecraft")
 mc = Minecraft.getInstance()
 
-Player = mc.Player
+Player = mc.player
 Player.SetDeltaMovement(0, 5, 0)
 ```
 

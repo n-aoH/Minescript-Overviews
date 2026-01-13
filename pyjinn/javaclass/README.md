@@ -103,7 +103,7 @@ Minecraft = JavaClass("net.minecraft.client.Minecraft")
 mc = Minecraft.getInstance()
 
 Player = mc.player
-Player.SetDeltaMovement(0, 5, 0)
+Player.setDeltaMovement(0, 5, 0)
 ```
 
 Now, you've just made your first JavaClass script that accesses a method!

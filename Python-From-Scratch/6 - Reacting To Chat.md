@@ -1,5 +1,9 @@
 # Reacting To Chat
 
+The event queue in minescript has a lot of overhead code to get started with (referred to as boilerplate). You don't have to completely understand what's going on to get through it, as you will always have access to the minescript documentation to copy and alter to your needs.
+
+It can be overwhelming at first, but gets significantly easier over time. The next few guides will cover the event queue, since it's an extremely important part of minescript that is necessary to make your scripts dynamic. That being said, feel free to skip over guides `6-8` in order to come back to it at a later date.
+
 ## Event Queue
 
 There are many events in minescript (keyboard, mouse, chat, entities getting added, block updates, recieving items/damage, explosions, chunks getting loaded, server changes)

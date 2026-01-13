@@ -124,6 +124,8 @@ while True:
         player_press_jump(False)
 ```
 
+:star: ready to end the script? Use `\killjob -1` to stop all running scripts.
+
 Now you've created a macro that jumps whenever the floor is lava!
 
 You can use these conditional statements inside your future macros to make them more interactive. In future lessons, I'll cover entities, chat listeners, and more ways to make your scripts interact with the minecraft world!

@@ -31,6 +31,7 @@ In addition to `import <module>`, you can also reference them in additional ways
 
 ```python
 import time # From above
+import time as t # Allows you to shorten it.
 from time import sleep # Allows you to reference the sleep() function without putting the "time." at the start
 from time import * # imports everything from time into the codebase
 ```

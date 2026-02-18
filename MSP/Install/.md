@@ -1,4 +1,4 @@
-# Installing Minescript Plus
+# Installing Minescript Plus 
 
 ## Branches
 

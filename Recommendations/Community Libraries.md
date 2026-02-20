@@ -73,7 +73,15 @@ Versions: all ([Minescript Site](https://minescript.net/downloads))
 
 ## Rotation.py
 
-(not added yet)
+As of `19/2/2026`,
+
+rotation.py is a community-made library made by @Jones in the Minescript discord. I forked a version of it to allow looking at a set of (x, y, z) coordinates (linked below)
+
+It comes with a config for making human-like movements, and `look(pitch, yaw)` as well as `look_at(x, y, z)`.
+
+Currently Supports: Python Only
+
+Versions: all ([GitHub](https://github.com/n-aoH/minescript-projects/blob/main/rotation.py))
 
 ## Looker
 
@@ -99,6 +107,8 @@ For more regular terrain, these pathfinders are much faster and more human.
 
 ## ThetaStar 
 
+As of `19/2/2026`,
+
 ThetaStar is a pathfinding script developped by @hyshenn, allowing you to pathfind to specific points in your world.
 
 ```py
@@ -116,6 +126,8 @@ Versions: all ([GitHub](https://github.com/hyshenn/thetaSTAR))
 
 ## MS Extras
 
+As of `19/2/2026`,
+
 MS Extras is another Theta* interface by @hyshenn, although this time using an actual minecraft mod to speed it up.
 
 [Code Snippet](https://discord.com/channels/930220988472389713/1472882398235725908)
@@ -128,9 +140,9 @@ Versions: 1.21.11 CONFIRMED, likely will work with other versions. ([modrinth](h
 
 # World Rendering
 
-
-
 ## lib_ren
+
+As of `19/2/2026`,
 
 Lib Ren is a rendering library made by @JulianisLost, with compatibility up to 1.21.8.
 

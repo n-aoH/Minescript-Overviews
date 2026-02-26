@@ -40,7 +40,7 @@ with EventQueue() as event_queue:
 
 Here, setting up `start_macro()` before this block will call that block every time you hit the down arrow key (if it's not already active of course!)
 
-:star: Make sure to always define your functions above your main loop.
+`⭐ Make sure to always define your functions above your main loop.`
 
 However, using this, we still can't take input during the macro loop, only between macros. Depending on your purposes, this may be enough for you.
 

@@ -99,4 +99,4 @@ with EventQueue() as event_queue:
 
 And now we have a toggle! This method works for any input or thread that you need. 
 
-`⭐ Don't forget to use the global keyword when making a function use a global variable!`
+⭐ Don't forget to use the global keyword when making a function use a global variable!

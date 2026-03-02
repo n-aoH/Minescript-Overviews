@@ -36,6 +36,8 @@ Inside your game, you can now type `\` followed by your file name. The chat text
 
 Now once you hit enter, your text will be printed to chat!
 
+:star: Error code 9009? This means that minescript cannot find your python instance. Either install it properly from the microsoft store (windows ships a link to the store instead of python by default) or manually point it to the correct instance on your PC (`where python3` -> `minecraft/minescript/config.txt`)
+
 ## Issues?
 
 There are several community-made resources to help you.

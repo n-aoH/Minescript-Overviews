@@ -94,7 +94,7 @@ Let's take the `setDeltaMovement(double arg0, double arg1, double arg2)` method 
 
 You access these methods ingame using the Mojang mappings, similar to before:
 
-```Player.SetDeltaMovement(0, 5, 0)```
+```Player.setDeltaMovement(0, 5, 0)```
 
 Putting it all together:
 

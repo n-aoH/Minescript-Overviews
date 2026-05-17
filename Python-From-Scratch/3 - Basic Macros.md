@@ -40,7 +40,7 @@ If you want to use something like `pyautogui`, you will not be able to use your 
 
 ## Turning
 
-In order to turn you player, you can use set_player_orientation(yaw, pitch).
+In order to turn you player, you can use player_set_orientation(yaw, pitch).
 
 To turn, you simply add a number to your current pitch.
 
@@ -50,7 +50,7 @@ from minescript import *
 yaw = player().yaw
 pitch = player().pitch
 
-set_player_orientation(yaw + 45, pitch) # Turn 45 degrees.
+player_set_orientation(yaw + 45, pitch) # Turn 45 degrees.
 ```
 
 I have explained minecraft rotation in more detail [here](https://github.com/n-aoH/Minescript-Overviews/blob/main/general/rotation/README.md).
@@ -95,7 +95,7 @@ def turn(x, y):
   yaw = player().yaw
   pitch = player().pitch
 
-  set_player_orientation(yaw + x, pitch + y)
+  player_set_orientation(yaw + x, pitch + y)
 ```
 
 Putting this all together we can create a simple macro to walk around, referenced similar to:

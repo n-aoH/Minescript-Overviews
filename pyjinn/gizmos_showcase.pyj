@@ -1,0 +1,114 @@
+# gizmos_showcase.pyj (by RazrCraft)
+# Renders one example of every Gizmos primitive near (0, defined-Y, 0).
+# Stand at roughly (0, defined-Y, 0) facing south-east to see everything at once.
+# Auto-removes after 60 seconds.
+
+from system.pyj.minescript import (JavaClass, JavaFloat, 
+                       add_event_listener, remove_event_listener, set_timeout)
+
+Gizmos          = JavaClass("net.minecraft.gizmos.Gizmos")
+GizmoStyle      = JavaClass("net.minecraft.gizmos.GizmoStyle")
+TextGizmo_Style = JavaClass("net.minecraft.gizmos.TextGizmo$Style")
+BlockPos        = JavaClass("net.minecraft.core.BlockPos")
+Vec3            = JavaClass("net.minecraft.world.phys.Vec3")
+AABB            = JavaClass("net.minecraft.world.phys.AABB")
+Direction       = JavaClass("net.minecraft.core.Direction")
+ARGB            = JavaClass("net.minecraft.util.ARGB")
+
+Y = -58 # defined-Y (stone platform in void world is at y=-61)
+
+# ---------------------------------------------------------------------------
+# Layout — all gizmos spread on a 3x3 grid, 4 blocks apart, at defined-Y
+#
+#   (-4, Y, -4)  (0, Y, -4)  (4, Y, -4)
+#   (-4, Y,  0)  (0, Y,  0)  (4, Y,  0)
+#   (-4, Y,  4)  (0, Y,  4)  (4, Y,  4)
+# ---------------------------------------------------------------------------
+
+# Colors
+C_WHITE  = ARGB.color(255, 255, 255, 255)
+C_CYAN   = ARGB.color(255,   0, 220, 255)
+C_YELLOW = ARGB.color(255, 255, 220,   0)
+C_RED    = ARGB.color(255, 255,  60,  60)
+C_GREEN  = ARGB.color(255,  80, 220,  80)
+C_PURPLE = ARGB.color(255, 180,  80, 255)
+C_ORANGE = ARGB.color(255, 255, 140,   0)
+C_PINK   = ARGB.color(255, 255, 100, 180)
+
+C_FILL_CYAN   = ARGB.color(60,   0, 220, 255)
+C_FILL_GREEN  = ARGB.color(60,  80, 220,  80)
+C_FILL_PURPLE = ARGB.color(60, 180,  80, 255)
+
+# Label style
+LABEL = TextGizmo_Style.forColorAndCentered(C_WHITE).withScale(JavaFloat(0.9))
+
+
+def to_vec3(x: float, y: float, z: float) -> Vec3: # type: ignore
+    return Vec3(JavaFloat(x), JavaFloat(y), JavaFloat(z))
+
+
+def label(text: str, x: float, y: float, z: float):
+    """Helper: floating label 1.8 blocks above the gizmo."""
+    Gizmos.billboardText(text, to_vec3(x, y + 1.8, z), LABEL).setAlwaysOnTop()
+
+
+def on_render(event: RenderEvent) -> None: # type: ignore
+
+    # ── (−4, Y, −4) · Point ──────────────────────────────────────────────
+    Gizmos.point(to_vec3(-4, Y+.5, -4), C_YELLOW, JavaFloat(8.0)).setAlwaysOnTop()
+    label("point", -4, Y+.5, -4)
+
+    # ── (0, Y, −4) · Line ────────────────────────────────────────────────
+    Gizmos.line(to_vec3(-1, Y+.2, -4), to_vec3(1, Y+1, -4), C_CYAN, JavaFloat(2.0)).setAlwaysOnTop()
+    label("line", 0, Y+.5, -4)
+
+    # ── (4, Y, −4) · Arrow ───────────────────────────────────────────────
+    Gizmos.arrow(to_vec3(3, Y+.2, -4), to_vec3(5, Y+1.2, -4), C_GREEN, JavaFloat(2.0)).setAlwaysOnTop()
+    label("arrow", 4, Y+.5, -4)
+
+    # ── (−4, Y, 0) · Cuboid from BlockPos ────────────────────────────────
+    Gizmos.cuboid(BlockPos(-5, Y, -1),
+                  GizmoStyle.stroke(C_RED, JavaFloat(1.5))).setAlwaysOnTop()
+    label("cuboid (BlockPos)", -4, Y+.5, 0)
+
+    # ── (0, Y, 0) · Cuboid from AABB (filled + stroke) ───────────────────
+    box = AABB(JavaFloat(-0.8), JavaFloat(Y), JavaFloat(-0.8),
+               JavaFloat(0.8),  JavaFloat(Y+1.4), JavaFloat(0.8))
+    Gizmos.cuboid(box,
+                  GizmoStyle.strokeAndFill(C_PURPLE, JavaFloat(1.5), C_FILL_PURPLE),
+                  True).setAlwaysOnTop()
+    label("cuboid (AABB)", 0, Y+1.4, 0)
+
+    # ── (4, Y, 0) · Circle ───────────────────────────────────────────────
+    Gizmos.circle(to_vec3(4, Y+.05, 0), JavaFloat(1.2),
+                  GizmoStyle.stroke(C_ORANGE, JavaFloat(2.0))).setAlwaysOnTop()
+    label("circle", 4, Y+.5, 0)
+
+    # ── (−4, Y, 4) · Rect — axis-aligned face ────────────────────────────
+    Gizmos.rect(to_vec3(-5.0, Y, 3.0), to_vec3(-3.0, Y+1.5, 5.0),
+                Direction.NORTH,
+                GizmoStyle.strokeAndFill(C_GREEN, JavaFloat(1.5), C_FILL_GREEN)
+                ).setAlwaysOnTop()
+    label("rect (face)", -4, Y+1.5, 4)
+
+    # ── (0, Y, 4) · Rect — arbitrary quad ────────────────────────────────
+    Gizmos.rect(to_vec3(-0.8, Y+1.5, 3.2),
+                to_vec3( 0.8, Y+1.5, 3.2),
+                to_vec3( 1.2, Y+.1, 4.8),
+                to_vec3(-1.2, Y+.1, 4.8),
+                GizmoStyle.strokeAndFill(C_PINK, JavaFloat(1.5), C_FILL_PURPLE)
+                ).setAlwaysOnTop()
+    label("rect (quad)", 0, Y+1.5, 4)
+
+    # ── (4, Y, 4) · billboardTextOverBlock ───────────────────────────────
+    Gizmos.billboardTextOverBlock("billboardTextOverBlock",
+                                  BlockPos(4, Y, 4),
+                                  0, C_CYAN, JavaFloat(1.0)).setAlwaysOnTop()
+    # Small marker so the block is visible
+    Gizmos.cuboid(BlockPos(4, Y, 4),
+                  GizmoStyle.stroke(C_CYAN, JavaFloat(1.0))).setAlwaysOnTop()
+
+
+listener = add_event_listener("render", on_render)
+# Remove the render listener and finish the script after 1 minute
+set_timeout(lambda: remove_event_listener(listener), 60_000)

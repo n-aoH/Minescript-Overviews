@@ -26,11 +26,11 @@ You've likely created at least one script at this point. You can place Minescrip
 
 Minescript is split into classes for ease of maintenance and imports. 
 
-Using the `Util` class as an example, below is a script to print out the hunger level of the player.
+Using the `Player` class as an example, below is a script to print out the hunger level of the player.
 
 ```python
-from minescript_plus import Util
-print(Util.get_food_level)
+from minescript_plus import  Player
+print( Player.get_food_level())
 ```
 ## Documentation
 

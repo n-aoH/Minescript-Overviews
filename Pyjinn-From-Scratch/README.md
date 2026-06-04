@@ -2,7 +2,7 @@
 
 This guide assumes that you already know a reasonable amount of python, and covers Pyjinn-specific features.
 
-If you are not already firmiliar with Minescript, I would recommend following Python-From-Scratch before beginning this series.
+If you are not already familiar with Minescript, I would recommend following Python-From-Scratch before beginning this series.
 
 # Differences From Python
 

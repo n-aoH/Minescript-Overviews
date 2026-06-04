@@ -25,7 +25,7 @@ any other standard python modules
 
 However, Pyjinn has limited support for some modules. EX:
 
-```
+```py
 # tester.py // \tester TESTARG
 import sys
 
@@ -58,7 +58,7 @@ All these upsides to Pyjinn are great, but what if you wanted to do something th
 
 Luckily, Pyjinn scripts can be embedded into Python scripts to allow you to get the best of both worlds.
 
-```
+```py
 # tester.py // \tester
 
 import time

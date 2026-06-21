@@ -10,7 +10,7 @@ I personally prefer to use threads, but you can check the `event.type` variable 
 
 As a basic example of why threading is necessary, let's start with our macro from earlier.
 
-``py 
+```py 
 with EventQueue() as event_queue:
   event_queue.register_key_listener()
   while True:

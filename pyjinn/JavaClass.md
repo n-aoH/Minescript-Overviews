@@ -25,17 +25,17 @@ The best library for mappings up to 1.21.11 is `mappings.dev`. Navigate to your 
 Pyjinn has JavaClass automatically imported from `system.pyj.minescript`, but your .py files will require either `java` (recent versions) or `lib_java` (legacy)
 
 Pyjinn:
-```
+```py
 from system.pyj.minescript import JavaClass #Technically not needed but your IDE gets less angry
 ```
 
 Java:
-```
+```py
 from java import JavaClass
 ```
 
 Lib_Java (legacy):
-```
+```py
 from lib_java import JavaClass
 ```
 
@@ -50,12 +50,12 @@ Under the mapping page for your version, `https://mappings.dev/1.21.10/index.htm
 There are several entries that include this, but you are looking for the entry that is specifically `net.minecraft.client`.
 
 Inside your code, you can reference the `Minecraft` class inside of here as follows:
-```
+```py
 Minecraft = JavaClass("net.minecraft.client.Minecraft")
 ```
 
 From here, you can access the `GetInstance` method in order to create a class of it.
-```
+```py
 mc = Minecraft.getInstance()
 ```
 
@@ -76,13 +76,14 @@ If you still require using Pyjinn files inside of a Python project, you can do s
 **!!! This snippet uses code that will get you banned by anticheat on multiplayer servers. USE THIS AS AN EXAMPLE IN YOUR OWN SINGLEPLAYER WORLD !!!**
 
 Using the above code to make a snippet:
-```
+```py
 Minecraft = JavaClass("net.minecraft.client.Minecraft")
 mc = Minecraft.getInstance()
 ```
 
 We can actually get in-game entity of the player from this snippet:
-```Player = mc.Player```
+```py
+Player = mc.Player```
 
 From here, you can access any `public` method shown under `net.minecraft.world.entity` -> Class: `Entity` OR `net.minecraft.world.entity.player` -> Class: `Player` and edit these values.
 
@@ -94,11 +95,12 @@ Let's take the `setDeltaMovement(double arg0, double arg1, double arg2)` method 
 
 You access these methods ingame using the Mojang mappings, similar to before:
 
-```Player.setDeltaMovement(0, 5, 0)```
+```py
+Player.setDeltaMovement(0, 5, 0)```
 
 Putting it all together:
 
-```
+```py
 Minecraft = JavaClass("net.minecraft.client.Minecraft")
 mc = Minecraft.getInstance()
 

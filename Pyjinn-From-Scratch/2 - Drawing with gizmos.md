@@ -47,7 +47,7 @@ Now, we'll get into actually rendering a box, which is only 3 lines from here!
 ```py
 def on_render(event):
 
-    Gizmos.cuboid(BlockPos(10, 64, 10), filled).setAlwaysOnTop()
+    Gizmos.cuboid(BlockPos(10, 64, 10), filled)
 
 add_event_listener("render",on_render)
 ```
@@ -91,7 +91,7 @@ And then, you can simply swap out the `BlockPos` for the box.
 def on_render(event):
 
     box = AABB(9, 63, 9, 11, 65, 10)
-    Gizmos.cuboid(box, filled).setAlwaysOnTop()
+    Gizmos.cuboid(box, filled)
 
 add_event_listener("render",on_render)
 ```
@@ -124,10 +124,12 @@ def on_render(event):
 And then pass them into each box:
 ```py
         box = AABB(x-.5, y, z-.5, x+.5, y+2, z+.5) # 1 width, 1 length, 2 height on these boxes
-        Gizmos.cuboid(box, filled).setAlwaysOnTop()
+        Gizmos.cuboid(box, filled)
 ```
 
 Combining this, we've finally drawn the boxes!
+
+Feel free to play around with more rendering settings, like fadeout time, persistence, and being on the top layer (covered in the wiki page)!
 
 Of course, the boxes don't show the hitbox, but that's as far as you can go without diving deeper into JavaClasses and `Java` entity references (which will be covered later).
 
